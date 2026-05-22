@@ -1,3 +1,5 @@
+# Home Lab Metrics Collector v1.0
+
 import psutil
 import socket
 import time
