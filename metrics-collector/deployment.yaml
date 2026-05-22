@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: metrics-collector
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: metrics-collector
+  template:
+    metadata:
+      labels:
+        app: metrics-collector
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
+        prometheus.io/path: "/metrics"
+    spec:
+      containers:
+      - name: metrics-collector
+        image: s4pynk0/homelab-metrics:v3
+        ports:
+        - containerPort: 8000
